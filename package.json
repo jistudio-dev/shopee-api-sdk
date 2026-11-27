@@ -1,0 +1,32 @@
+{
+  "name": "shopee-global-sdk",
+  "version": "1.0.0",
+  "description": "Zero-dependency Node.js 18+ ESM SDK for Shopee Global 8-Market API (exact unrounded sold count, Live bags, batch 20 SKUs & affiliate)",
+  "type": "module",
+  "main": "./node/index.mjs",
+  "exports": {
+    ".": "./node/index.mjs"
+  },
+  "files": [
+    "node/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "shopee",
+    "shopee-api",
+    "ecommerce",
+    "rapidapi",
+    "apify"
+  ],
+  "author": "JiStudio <dev@jistudio.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jistudio-dev/shopee-api-sdk.git"
+  },
+  "homepage": "https://jistudio-dev.github.io/shopee-api/"
+}

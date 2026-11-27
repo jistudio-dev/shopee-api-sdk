@@ -1,11 +1,34 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "jistudio-shopee-api-sdk"
+name = "shopee-global-api"
 version = "1.0.0"
-description = "Zero-dependency Python SDK for Shopee Global E-Commerce, Live & Affiliate API (8 countries)"
-readme = "../README.md"
-requires-python = ">=3.9"
-license = { text = "MIT" }
+description = "Zero-dependency Python SDK for Shopee Global 8-Market API (exact unrounded sold counts, Live bags, batch 20 SKUs & affiliate)."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "JiStudio", email = "dev@jistudio.dev"}]
+keywords = ["shopee", "shopee-api", "ecommerce", "price-tracker", "rapidapi", "apify"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://jistudio-dev.github.io/shopee-api/"
+Repository = "https://github.com/jistudio-dev/shopee-api-sdk"
+Documentation = "https://jistudio-dev.github.io/shopee-api/"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["shopee_api_sdk*"]
