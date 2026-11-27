@@ -1,0 +1,8 @@
+{
+  "name": "@jistudio-dev/shopee-api-sdk",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.mjs",
+  "description": "Zero-dependency Node.js SDK for Shopee Global E-Commerce, Live & Affiliate API (8 markets)",
+  "license": "MIT"
+}

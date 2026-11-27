@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jistudio-shopee-api-sdk"
+version = "1.0.0"
+description = "Zero-dependency Python SDK for Shopee Global E-Commerce, Live & Affiliate API (8 countries)"
+readme = "../README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }

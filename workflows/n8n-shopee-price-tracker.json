@@ -1,0 +1,97 @@
+{
+  "name": "JiStudio — Shopee Hourly Price & Sold Velocity Tracker",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Every 6 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "2",
+      "name": "Fetch Shopee Product Detail",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        300
+      ],
+      "parameters": {
+        "url": "https://shopee-e-commerce-live-affiliate-intelligence.p.rapidapi.com/v1/rapidapi/product/detail",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "https://shopee.vn/product/37251933/41412722725"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-RapidAPI-Key",
+              "value": "={{ $env.RAPIDAPI_KEY }}"
+            },
+            {
+              "name": "X-RapidAPI-Host",
+              "value": "shopee-e-commerce-live-affiliate-intelligence.p.rapidapi.com"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "3",
+      "name": "Extract Metrics",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const p = $input.first().json.product;\nreturn [{ json: { item_id: p.item_id, name: p.name, price: p.price, exact_sold: p.historical_sold, monthly_sold: p.monthly_sold, stock: p.stock, checked_at: new Date().toISOString() } }];"
+      }
+    }
+  ],
+  "connections": {
+    "Every 6 Hours": {
+      "main": [
+        [
+          {
+            "node": "Fetch Shopee Product Detail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Shopee Product Detail": {
+      "main": [
+        [
+          {
+            "node": "Extract Metrics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
