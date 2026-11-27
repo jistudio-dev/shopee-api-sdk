@@ -1,0 +1,736 @@
+{
+  "info": {
+    "name": "JiStudio Shopee Global E-Commerce, Live & Affiliate API (13 Routes · 8 Markets)",
+    "description": "Real-time multi-region e-commerce product intelligence (~250ms latency) supporting all 8 Shopee markets: Vietnam (vn), Indonesia (id), Thailand (th), Philippines (ph), Malaysia (my), Singapore (sg), Taiwan (tw), and Brazil (br). Fetch unrounded sold counts, batch 20 products/call, multi-warehouse stock, livestream shopping bag items, daily discover trends, keyword autocomplete & matched shops, shop profiles, and affiliate commission links. Independent public market research and affiliate utility; not affiliated with or endorsed by Shopee or Sea Limited.\n\nGet your free RapidAPI key at: https://rapidapi.com/Techssss/api/shopee-e-commerce-live-affiliate-intelligence\nOpen-source SDKs & MCP servers: https://github.com/jistudio-dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "RAPIDAPI_KEY",
+      "value": "YOUR_RAPIDAPI_KEY",
+      "type": "string"
+    },
+    {
+      "key": "RAPIDAPI_HOST",
+      "value": "shopee-e-commerce-live-affiliate-intelligence.p.rapidapi.com",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "System",
+      "item": [
+        {
+          "name": "1. Service Health & Supported 8 Countries Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/health",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "health"
+              ],
+              "query": []
+            },
+            "description": "1. Service Health & Supported 8 Countries Status"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Product Intelligence",
+      "item": [
+        {
+          "name": "2. Get Product Detail, Unrounded Sold Count, Vouchers & Commission (8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/product/detail",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "product",
+                "detail"
+              ],
+              "query": [
+                {
+                  "key": "url",
+                  "value": "https://shopee.vn/product/37251933/41412722725",
+                  "description": "Full Shopee product URL from any of the 8 countries or short link (s.shopee.vn, id.shp.ee, etc.)",
+                  "disabled": false
+                },
+                {
+                  "key": "shop_id",
+                  "value": "37251933",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "item_id",
+                  "value": "41412722725",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "affiliate_id",
+                  "value": "17321010010",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "2. Get Product Detail, Unrounded Sold Count, Vouchers & Commission (8 Countries)"
+          },
+          "response": []
+        },
+        {
+          "name": "3. Batch Get Up To 20 Products in 1 Request (~250ms)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/product/batch",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "product",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "urls",
+                  "value": "https://shopee.vn/product/37251933/41412722725,https://shopee.vn/product/111138057/20567055749",
+                  "description": "Optional comma-separated product URLs (or pass JSON array in Body)",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "3. Batch Get Up To 20 Products in 1 Request (~250ms)",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4. Get Product Category Breadcrumb & Sold-Out Variation Status (8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/product/categories",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "product",
+                "categories"
+              ],
+              "query": [
+                {
+                  "key": "url",
+                  "value": "https://shopee.vn/product/37251933/41412722725",
+                  "description": "Optional full Shopee product URL or short link (auto-extracts shop_id, item_id, and country)",
+                  "disabled": false
+                },
+                {
+                  "key": "shop_id",
+                  "value": "37251933",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "item_id",
+                  "value": "41412722725",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "4. Get Product Category Breadcrumb & Sold-Out Variation Status (8 Countries)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Shopee Live Radar",
+      "item": [
+        {
+          "name": "5. Inspect Shopee Live Shopping Bag & Multi-Warehouse Stock (No-Cookie, 8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/live/bag-items",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "live",
+                "bag-items"
+              ],
+              "query": [
+                {
+                  "key": "session_id",
+                  "value": "44060946",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "5. Inspect Shopee Live Shopping Bag & Multi-Warehouse Stock (No-Cookie, 8 Countries)"
+          },
+          "response": []
+        },
+        {
+          "name": "6. Get Shopee Live Raw FLV/HLS Stream URLs & Preset Chat (8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/live/stream-info",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "live",
+                "stream-info"
+              ],
+              "query": [
+                {
+                  "key": "session_id",
+                  "value": "44060946",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "6. Get Shopee Live Raw FLV/HLS Stream URLs & Preset Chat (8 Countries)"
+          },
+          "response": []
+        },
+        {
+          "name": "7. Discover Active Shopee Live Sessions & Top Replays (8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/live/discover",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "live",
+                "discover"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "7. Discover Active Shopee Live Sessions & Top Replays (8 Countries)"
+          },
+          "response": []
+        },
+        {
+          "name": "8. Check Real-Time Seller/KOL Livestream Status by Shop ID or UID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/live/host-status",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "live",
+                "host-status"
+              ],
+              "query": [
+                {
+                  "key": "shop_id",
+                  "value": "37251933",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "uid",
+                  "value": "37253318",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "8. Check Real-Time Seller/KOL Livestream Status by Shop ID or UID"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Market Trends & Algorithm",
+      "item": [
+        {
+          "name": "9. Get Homepage Daily Discover & Algorithm Push Feed (No-Cookie, 8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/trends/daily-discover",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "trends",
+                "daily-discover"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "15",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "9. Get Homepage Daily Discover & Algorithm Push Feed (No-Cookie, 8 Countries)"
+          },
+          "response": []
+        },
+        {
+          "name": "10. Get Category Top-Selling Hot Picks (No-Cookie, 8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/trends/hot-picks",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "trends",
+                "hot-picks"
+              ],
+              "query": [
+                {
+                  "key": "preset_key",
+                  "value": "beauty_hair",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "10. Get Category Top-Selling Hot Picks (No-Cookie, 8 Countries)"
+          },
+          "response": []
+        },
+        {
+          "name": "11. Get Buyer Search Keyword Autocomplete, Matched Shops & Trend Scores (8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/trends/search-keywords",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "trends",
+                "search-keywords"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "iphone",
+                  "description": "Search term or product prefix (also accepts ?q= or ?query=)",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "11. Get Buyer Search Keyword Autocomplete, Matched Shops & Trend Scores (8 Countries)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Storefront & Affiliate",
+      "item": [
+        {
+          "name": "12. Get Storefront Profile, Holiday Status & Multi-Shop Batch Info (8 Countries)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/shop/profile",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "shop",
+                "profile"
+              ],
+              "query": [
+                {
+                  "key": "shop_id",
+                  "value": "37251933",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "shop_ids",
+                  "value": "37251933,111138057",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "include_choice_shops",
+                  "value": "False",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "12. Get Storefront Profile, Holiday Status & Multi-Shop Batch Info (8 Countries)"
+          },
+          "response": []
+        },
+        {
+          "name": "13. Calculate Affiliate Commission & Generate 4 Tracking Link Formats (8 Countries)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-RapidAPI-Key",
+                "value": "{{RAPIDAPI_KEY}}",
+                "type": "text"
+              },
+              {
+                "key": "X-RapidAPI-Host",
+                "value": "{{RAPIDAPI_HOST}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://{{RAPIDAPI_HOST}}/v1/rapidapi/affiliate/analyze",
+              "protocol": "https",
+              "host": [
+                "{{RAPIDAPI_HOST}}"
+              ],
+              "path": [
+                "v1",
+                "rapidapi",
+                "affiliate",
+                "analyze"
+              ],
+              "query": [
+                {
+                  "key": "urls",
+                  "value": "https://shopee.vn/product/37251933/41412722725",
+                  "description": "Optional comma-separated product URLs (or pass JSON array in Body)",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "13. Calculate Affiliate Commission & Generate 4 Tracking Link Formats (8 Countries)",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
